@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Accounts, STATES } from 'meteor/std:accounts-ui';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Accounts, STATES } from 'meteor/epotek:accounts-ui'
 
 class Form extends Accounts.ui.Form {
   render() {
@@ -14,10 +14,10 @@ class Form extends Accounts.ui.Form {
       ready = true,
       className,
       formState
-    } = this.props;
+    } = this.props
 
     return (
-      <form ref={(ref) => this.form = ref} className={[ "accounts", className ].join(' ')}>
+      <form ref={(ref) => this.form = ref} className={[ 'accounts', className ].join(' ')}>
         {Object.keys(fields).length > 0 ? (
           <Accounts.ui.Fields fields={ fields } />
         ) : null }
@@ -57,10 +57,10 @@ class Form extends Accounts.ui.Form {
         </fieldset>
         <fieldset>
           <Accounts.ui.FormMessage className="alert alert-danger m-t-1 m-b-0" role="alert"
-                                   style={{display: 'block'}} {...message} />
+            style={{display: 'block'}} {...message} />
         </fieldset>
       </form>
-    );
+    )
   }
 }
 
@@ -69,7 +69,7 @@ Form.propTypes = {
   buttons: PropTypes.object.isRequired,
   error: PropTypes.string,
   ready: PropTypes.bool
-};
+}
 
 class Buttons extends Accounts.ui.Buttons {
 }
@@ -83,39 +83,39 @@ class Button extends Accounts.ui.Button {
       onClick,
       className,
       icon
-    } = this.props;
+    } = this.props
     return type == 'link' ? (
       <a href={ href }
-         style={{cursor: 'pointer'}}
-         className={ className }
-         onClick={ onClick }>
-        { icon ? (<i className={["fa", icon].join(' ')} />) : null }{ icon ? ' | ' : ''}{ label }
+        style={{cursor: 'pointer'}}
+        className={ className }
+        onClick={ onClick }>
+        { icon ? (<i className={[ 'fa', icon ].join(' ')} />) : null }{ icon ? ' | ' : ''}{ label }
       </a>
     ) : (
       <button className={ [
-                'btn',
-                type == 'submit' ? 'btn-primary' : '',
-                disabled ? 'disabled' : '',
-                className
-              ].join(' ') }
-              type={ type }
-              disabled={ disabled }
-              onClick={ onClick }>
-        { icon ? (<i className={["fa", icon].join(' ')} />) : null }{ icon ? ' | ' : ''}{ label }
+        'btn',
+        type == 'submit' ? 'btn-primary' : '',
+        disabled ? 'disabled' : '',
+        className
+      ].join(' ') }
+      type={ type }
+      disabled={ disabled }
+      onClick={ onClick }>
+        { icon ? (<i className={[ 'fa', icon ].join(' ')} />) : null }{ icon ? ' | ' : ''}{ label }
       </button>
-    );
+    )
   }
 }
 class Fields extends Accounts.ui.Fields {
   render() {
-    let { fields = {}, className = "" } = this.props;
+    let { fields = {}, className = '' } = this.props
     return (
-      <fieldset className={ [className].join(' ') }>
+      <fieldset className={ [ className ].join(' ') }>
         {Object.keys(fields).map((id, i) =>
           <Accounts.ui.Field {...fields[id]} key={i} />
         )}
       </fieldset>
-    );
+    )
   }
 }
 class Field extends Accounts.ui.Field {
@@ -128,35 +128,35 @@ class Field extends Accounts.ui.Field {
       onChange,
       required = false,
       className,
-      defaultValue = ""
-    } = this.props;
-    const { mount = true } = this.state;
+      defaultValue = ''
+    } = this.props
+    const { mount = true } = this.state
     return mount ? (
-      <div className={["form-group", required ? "required" : ""].join(' ')}>
+      <div className={[ 'form-group', required ? 'required' : '' ].join(' ')}>
         <label htmlFor={ id } className="form-control-label control-label">{ label }</label>
-        {/*}<input id="password" className="form-control" name="password" style={{display: 'none'}} /> */}
+        {/* }<input id="password" className="form-control" name="password" style={{display: 'none'}} /> */}
         <input id={ id }
-               className="form-control"
-               name={ id }
-               type={ type }
-               ref={ (ref) => this.input = ref }
-               autoCapitalize={ type == 'email' ? 'none' : undefined }
-               autoCorrect="off"
-               onChange={ onChange }
-               placeholder={ hint }
-               defaultValue={ defaultValue }
-               required={required ? "required" : ""} />
+          className="form-control"
+          name={ id }
+          type={ type }
+          ref={ (ref) => this.input = ref }
+          autoCapitalize={ type == 'email' ? 'none' : undefined }
+          autoCorrect="off"
+          onChange={ onChange }
+          placeholder={ hint }
+          defaultValue={ defaultValue }
+          required={required ? 'required' : ''} />
       </div>
-    ) : null;
+    ) : null
   }
 }
 export class PasswordOrService extends Accounts.ui.PasswordOrService {
   render() {
-    let { className, style = {} } = this.props;
-    let { hasPasswordService, services } = this.state;
-    labels = services;
+    let { className, style = {} } = this.props
+    let { hasPasswordService, services } = this.state
+    labels = services
     if (services.length > 2) {
-      labels = [];
+      labels = []
     }
 
     if (hasPasswordService && services.length > 0) {
@@ -166,9 +166,9 @@ export class PasswordOrService extends Accounts.ui.PasswordOrService {
             { `${T9n.get('orUse')} ${ labels.join(' / ') }` }
           </p>
         </div>
-      );
+      )
     }
-    return null;
+    return null
   }
 }
 class SocialButtons extends Accounts.ui.SocialButtons {
@@ -195,19 +195,19 @@ class SocialButtons extends Accounts.ui.SocialButtons {
           })}
         </div>
       );
-    } else {
+    } 
       return null;
-    }
+    
   }
 }
 class FormMessage extends Accounts.ui.FormMessage {
   render() {
-    let { message, type, role, className = "message", style = {} } = this.props;
+    let { message, type, role, className = 'message', style = {} } = this.props
     return message ? (
       <div style={ style }
-           className={[ className, type ].join(' ')}
-           role={role}>{ message }</div>
-    ) : null;
+        className={[ className, type ].join(' ')}
+        role={role}>{ message }</div>
+    ) : null
   }
 }
 // Notice! Accounts.ui.LoginForm manages all state logic at the moment, so avoid
@@ -215,15 +215,15 @@ class FormMessage extends Accounts.ui.FormMessage {
 // requests altering how that works are welcome.
 
 // Alter provided default unstyled UI.
-Accounts.ui.Form = Form;
-Accounts.ui.Buttons = Buttons;
-Accounts.ui.Button = Button;
-Accounts.ui.Fields = Fields;
-Accounts.ui.Field = Field;
-Accounts.ui.PasswordOrService = PasswordOrService;
-Accounts.ui.SocialButtons = SocialButtons;
-Accounts.ui.FormMessage = FormMessage;
+Accounts.ui.Form = Form
+Accounts.ui.Buttons = Buttons
+Accounts.ui.Button = Button
+Accounts.ui.Fields = Fields
+Accounts.ui.Field = Field
+Accounts.ui.PasswordOrService = PasswordOrService
+Accounts.ui.SocialButtons = SocialButtons
+Accounts.ui.FormMessage = FormMessage
 
 // Export the themed version.
-export { Accounts, STATES };
-export default Accounts;
+export { Accounts, STATES }
+export default Accounts

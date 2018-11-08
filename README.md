@@ -20,7 +20,7 @@ Support Bootstrap 3 & 4
 10. **[FlowRouter](https://github.com/studiointeract/accounts-ui##example-setup-using-flowrouter-meteor-13)** is fully supported, see the example how to use with FlowRouter.
 11. **[Server Side Rendering](https://github.com/studiointeract/accounts-ui##example-setup-using-flowrouter-meteor-13)** is easily setup, see how it's done with FlowRouter (SSR). An example for React Router using [react-router-ssr](https://github.com/thereactivestack/meteor-react-router-ssr) coming shortly.
 
-### Based on and extends std:accounts-ui
+### Based on and extends epotek:accounts-ui
 
 [https://atmospherejs.com/std/accounts-ui](https://atmospherejs.com/std/accounts-ui)
 
@@ -44,7 +44,7 @@ We support the standard [configuration in the account-ui package](http://docs.me
 ```javascript
 
 import React from 'react';
-import { Accounts } from 'meteor/std:accounts-ui';
+import { Accounts } from 'meteor/epotek:accounts-ui';
 
 Accounts.ui.config({
   passwordSignupFields: 'NO_PASSWORD',
@@ -68,7 +68,7 @@ if (Meteor.isClient) {
 ```javascript
 
 import React from 'react';
-import { Accounts } from 'meteor/std:accounts-ui';
+import { Accounts } from 'meteor/epotek:accounts-ui';
 import { FlowRouter } from 'meteor/kadira:flow-router-ssr';
 
 Accounts.ui.config({
