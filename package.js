@@ -10,7 +10,7 @@ Package.onUse(function (api) {
   api.versionsFrom('1.3')
   api.use('ecmascript')
   api.use('underscore')
-  api.use('epotek:accounts-ui@1.5.2')
+  api.use('epotek:accounts-ui@1.6.1')
 
   api.addFiles([
     'styles.css', 'social-buttons.css'
